@@ -3585,7 +3585,7 @@ class CAS_Client
         } else if (!empty($_SERVER['HTTP_X_FORWARDED_SERVER'])) {
             $server_url = $_SERVER['HTTP_X_FORWARDED_SERVER'];
         } else {
-            if (empty($_SERVER['SERVER_NAME'])) {
+            if (isset($_SERVER['HTTP_HOST'])) {
                 $server_url = $_SERVER['HTTP_HOST'];
             } else {
                 $server_url = $_SERVER['SERVER_NAME'];
