@@ -1569,6 +1569,27 @@ class phpCAS
     }
 
     /**
+     * Set base URL of the CAS client
+     *
+     * @param string $url the URL
+     *
+     * @return void
+     */
+    public static function setBaseURL($url)
+    {
+        phpCAS :: traceBegin();
+        phpCAS::_validateProxyExists();
+
+        try {
+            self::$_PHPCAS_CLIENT->setBaseURL($url);
+        } catch (Exception $e) {
+            phpCAS :: error(get_class($e) . ': ' . $e->getMessage());
+        }
+
+        phpCAS :: traceEnd();
+    }
+
+    /**
      * Get the URL that is set as the CAS service parameter.
      *
      * @return string Service Url
